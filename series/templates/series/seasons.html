@@ -1,0 +1,17 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>{{series.series_name}}</title>
+  </head>
+  <body>
+  
+	{% for season in seasons %}
+	<div class='box'>
+		<a href='{% url "series:seriesEpisodes" seriesId=series.id seasonId=season.id %}'>
+		<img src='{{season.img}}' alt='{{season.season_name}}' height='160' width='160'><br>
+		{{season.season_name}}</a><br>
+	</div>	
+	{% endfor %}
+	
+</body>
+</html>

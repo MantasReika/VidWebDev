@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>{{series.series_name}}</title>
+		{% load static %}
+		<link rel="stylesheet" href="{% static 'series/styles.css' %}">
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+		<!-- Optional theme -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	</head>
+	<body>
+	  
+		{% if episodes %}
+		<h1>Available episodes to watch</h1>
+			<div class='row'>
+			{% for episode in episodes %}
+			
+				<div class="col-sm-12 box" style="margin: 10px; display: flex;">
+					<!-- <img src='{{season.img}}' alt='{{season.season_name}}' height='auto' width='auto'><br> -->
+					<a href='{% url "series:episode" seriesId=series.id seasonId=season.id episodeId=episode.id %}'>{{episode.episode_name}}</a>
+				</div>
+			
+			{% endfor %}
+			</div>
+		{% else %}
+		<h1>No episodes to watch</h1>
+		{% endif %}
+	
+	</body>
+</html>

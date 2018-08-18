@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>{{series.series_name}}</title>
+		{% load static %}
+		<link rel="stylesheet" href="{% static 'series/styles.css' %}">
+	</head>
+	<body>
+	  
+		{% if episode %}
+			<h1>Episode {{episode.episode_number}} of {{series.series_name}}</h1>
+			<h2>{{episode.episode_name}}<h2/>
+			<iframe src="{{episode.video_src}}" 
+			scrolling="no" 
+			frameborder="0" 
+			width="700" height="430" 
+			allowfullscreen="true" webkitallowfullscreen="true" 
+			mozallowfullscreen="true"></iframe>
+		{% else %}
+			<h1>No episode to watch</h1>
+		{% endif %}
+	
+	</body>
+</html>

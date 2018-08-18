@@ -1,0 +1,31 @@
+
+<!DOCTYPE HTML>
+
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static 'series/styles.css' %}"/>
+
+<html>
+	<head>
+		<title>{{series.series_name}}</title>
+	</head>
+	<body>
+		<h1>TEST</h1>
+		{% if allSeries %}
+		<h1>Available series to watch</h1>
+		<ul>
+			{% for series in allSeries %}
+			<li>
+				<a href="{% url 'series:seriesSeasons' seriesId=series.id %}">
+					<img src='{{series.img}}' alt='{{series.series_name}}' height='160' width='160'><br>
+					{{series.series_name}}
+				</a>
+			</li>
+			{% endfor %}
+		</ul>
+		{% else %}
+		<h1>No series to watch</h1>
+		{% endif %}
+	<br>
+	<a href = "createSeries">Create Series<a>
+	</body>
+</html>	
