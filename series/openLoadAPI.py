@@ -68,12 +68,12 @@ def getEmbededLinkFromRawLink(link):
     return link.replace('f', 'embed', 1)
             
 def getEpisodeNumber(episodeName):
-    r = re.compile(r'E[0-9]+').search(episodeName)
+    r = re.compile(r'E[0-9]+', re.IGNORECASE).search(episodeName)
     assert None != r, "getEpisodeNumber failed 'assert None != r', episodeName = %s" % episodeName
     return int(r.group(0)[1:])
 
 def getSeasonNumber(seasonName):
-    r = re.compile(r'S[0-9]+').search(seasonName)
+    r = re.compile(r'S[0-9]+', re.IGNORECASE).search(seasonName)
     assert None != r, "getSeasonNumber failed 'assert None != r', seasonName = %s" % seasonName
     return int(r.group(0)[1:])
 
