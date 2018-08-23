@@ -1,7 +1,10 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.http import Http404
+from django.conf import settings
 from .models import Series, Season, Episode
+
+import os
 
 from . import openLoadAPI as api
 import json
@@ -10,8 +13,11 @@ import json
 def index(request):
 	allSeries = Series.objects.all()
 	context = {'allSeries' : allSeries}
-	
-	return HttpResponse(render(request, 'series/series.html', context))
+	viewMode = request.GET.get('view')
+	if viewMode == 'list':
+		return HttpResponse(render(request, 'series/html/dest/movielist.html', context))
+	else:
+		return HttpResponse(render(request, 'series/html/dest/moviegrid.html', context))
 	
 	
 def seriesSeasons(request, seriesId):
@@ -85,10 +91,9 @@ def episode(request, seriesId, seasonId, episodeId):
 def createSeries(request):
 	login = "08af2f7ed0f90e4c"
 	key	= "Vt9iQlnS"
+	print(settings.BASE_DIR)
+	meta = api.metaData(os.path.join(settings.BASE_DIR, "OpenLoadUpdateDatabase.csv"))
 	
-	""" TODO: get list of series to update from series.csv file """
-	trailerSrc = "https://www.youtube.com/watch?v=gcTkNV5Vg1E"
-	imgSrc = "https://production-gameflipusercontent.fingershock.com/us-east-1:d1d29838-417f-42ee-9268-2b7776c9b340/8851aa5a-3a9d-442d-ad01-047b2b206034/ed8bcccf-dbf8-4edd-8b2a-18671ba08c6a"
 	seriesFolderName = "Series"
 	seriesFolderId = api.getFolderIdByName(login, key, seriesFolderName)
 	assert seriesFolderId != "", "failed assert folderId not empty"
@@ -96,18 +101,27 @@ def createSeries(request):
 	for serie in seriesFolders:
 		serieFolderName = serie['name']
 		serieFolderId = serie['id']
+		meta.setCurrentMovie(serieFolderName)
 		try:
-			seriesObj = Series.objects.get(series_name=serieFolderName)
-			seriesObj.folder_id = serieFolderId
-			seriesObj.img = imgSrc
-			seriesObj.trailer_src = trailerSrc
+			seriesObj 				= Series.objects.get(series_name=serieFolderName)
+			seriesObj.folder_id 	= serieFolderId
+			seriesObj.release_year 	= meta.getReleaseYear()
+			seriesObj.finish_year 	= meta.getFinishYear()
+			seriesObj.imdb_scor 	= meta.getImdb()
+			seriesObj.trailer_src 	= meta.getTrailer()
+			seriesObj.img 			= meta.getImage()
+			seriesObj.genres 		= meta.getGenres()
+			seriesObj.description	= meta.getDescription()
 		except Series.DoesNotExist:
 			seriesObj = Series(	
 				series_name 		= serieFolderName,
-				description 		= "",
-				imdb_scor			= 8,
-				trailer_src			= trailerSrc,
-				img 				= imgSrc,
+				release_year		= meta.getReleaseYear(),
+				finish_year			= meta.getFinishYear(),
+				imdb_scor			= meta.getImdb(),
+				trailer_src			= meta.getTrailer(),
+				img 				= meta.getImage(),
+				genres				= meta.getGenres(),
+				description 		= meta.getDescription(),
 				folder_id 			= serieFolderId)
 		seriesObj.save()
 		
@@ -120,14 +134,14 @@ def createSeries(request):
 			try:
 				seasonObj = Season.objects.get(series=seriesObj, season_number=seasonNr)
 				seasonObj.folder_id = seasonFolderId
-				seasonObj.img = imgSrc
+				seasonObj.img = meta.getImage()
 				
 			except Season.DoesNotExist:
 				seasonObj = Season(
 					series		 		= seriesObj,
 					season_name 		= seasonName,
 					season_number		= seasonNr,
-					img 				= imgSrc,
+					img 				= meta.getImage(),
 					folder_id			= seasonFolderId)
 			seasonObj.save()
 			
@@ -135,7 +149,7 @@ def createSeries(request):
 			for episode in episodes:
 				episodeNr = api.getEpisodeNumber(episode["name"])
 				embedLink = "https://openload.co/embed/" + episode["linkextid"]
-				episodeName = api.cleanEpisodeName(episode['name'], [serieFolderName, "-", "(1080p x265 10bit Joy)"])
+				episodeName = api.cleanEpisodeName(episode['name'], [serieFolderName] + meta.getCleanNameParts())
 				try:
 					episodeObj = Episode.objects.get(season=seasonObj, episode_number=episodeNr)
 					episodeObj.episode_name = episodeName
