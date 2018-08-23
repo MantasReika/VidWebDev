@@ -6,6 +6,7 @@
 <html class="ie ie8 no-js" lang="en-US">
 <![endif]-->
 <!--[if !(IE 7) | !(IE 8)  ]><!-->
+{% load staticfiles %}
 <html lang="en" class="no-js">
 <head>
 	<!-- Basic need -->
@@ -23,19 +24,20 @@
 	<meta name="format-detection" content="telephone-no">
 
 	<!-- CSS files -->
-	<link rel="stylesheet" href="css/plugins.css">
-	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="{% static 'css/plugins.css' %}">
+	<link rel="stylesheet" href="{% static 'css/style.css' %}">
 
 </head>
 <body>
-<!--preloading-->
+<!--preloading
 <div id="preloader">
-    <img class="logo" src="images/logo1.png" alt="" width="119" height="58">
+    <img class="logo" src="{% static 'images/logo1.png' %}" alt="" width="119" height="58">
     <div id="status">
         <span></span>
         <span></span>
     </div>
 </div>
+-->
 <!--end of preloading-->
 <!--login form popup-->
 <div class="login-wrapper" id="login-content">
@@ -131,7 +133,7 @@
 							<span></span>
 						</div>
 				    </div>
-				    <a href="index.html"><img class="logo" src="images/logo1.png" alt="" width="119" height="58"></a>
+				    <a href="index.html"><img class="logo" src="{% static 'images/logo1.png' %}" alt="" width="119" height="58"></a>
 			    </div>
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse flex-parent" id="bs-example-navbar-collapse-1">
@@ -144,9 +146,9 @@
 							Home <i class="fa fa-angle-down" aria-hidden="true"></i>
 							</a>
 							<ul class="dropdown-menu level1">
-								<li><a href="index.html">Home 01</a></li>
-								<li><a href="homev2.html">Home 02</a></li>
-								<li><a href="homev3.html">Home 03</a></li>
+								<li><a href="{% static 'index.html' %}">Home 01</a></li>
+								<li><a href="{% static 'homev2.html' %}">Home 02</a></li>
+								<li><a href="{% static 'homev3.html' %}">Home 03</a></li>
 							</ul>
 						</li>
 						<li class="dropdown first">
@@ -157,13 +159,13 @@
 								<li class="dropdown">
 									<a href="#" class="dropdown-toggle" data-toggle="dropdown" >Movie grid<i class="ion-ios-arrow-forward"></i></a>
 									<ul class="dropdown-menu level2">
-										<li><a href="moviegrid.html">Movie grid</a></li>
-										<li><a href="moviegridfw.html">movie grid full width</a></li>
+										<li><a href="{% static 'moviegrid.html' %}">Movie grid</a></li>
+										<li><a href="{% static 'moviegridfw.html' %}">movie grid full width</a></li>
 									</ul>
 								</li>			
-								<li><a href="movielist.html">Movie list</a></li>
-								<li><a href="moviesingle.html">Movie single</a></li>
-								<li class="it-last"><a href="seriessingle.html">Series single</a></li>
+								<li><a href="{% static 'movielist.html' %}">Movie list</a></li>
+								<li><a href="{% static 'moviesingle.html' %}">Movie single</a></li>
+								<li class="it-last"><a href="{% static 'seriessingle.html' %}">Series single</a></li>
 							</ul>
 						</li>
 						<li class="dropdown first">
@@ -171,10 +173,10 @@
 							celebrities <i class="fa fa-angle-down" aria-hidden="true"></i>
 							</a>
 							<ul class="dropdown-menu level1">
-								<li><a href="celebritygrid01.html">celebrity grid 01</a></li>
-								<li><a href="celebritygrid02.html">celebrity grid 02 </a></li>
-								<li><a href="celebritylist.html">celebrity list</a></li>
-								<li class="it-last"><a href="celebritysingle.html">celebrity single</a></li>
+								<li><a href="{% static 'celebritygrid01.html' %}">celebrity grid 01</a></li>
+								<li><a href="{% static 'celebritygrid02.html' %}">celebrity grid 02 </a></li>
+								<li><a href="{% static 'celebritylist.html' %}">celebrity list</a></li>
+								<li class="it-last"><a href="{% static 'celebritysingle.html' %}">celebrity single</a></li>
 							</ul>
 						</li>
 						<li class="dropdown first">
@@ -182,9 +184,9 @@
 							news <i class="fa fa-angle-down" aria-hidden="true"></i>
 							</a>
 							<ul class="dropdown-menu level1">
-								<li><a href="bloglist.html">blog List</a></li>
-								<li><a href="bloggrid.html">blog Grid</a></li>
-								<li class="it-last"><a href="blogdetail.html">blog Detail</a></li>
+								<li><a href="{% static 'bloglist.html' %}">blog List</a></li>
+								<li><a href="{% static 'bloggrid.html' %}">blog Grid</a></li>
+								<li class="it-last"><a href="{% static 'blogdetail.html' %}">blog Detail</a></li>
 							</ul>
 						</li>
 						<li class="dropdown first">
@@ -192,10 +194,10 @@
 							community <i class="fa fa-angle-down" aria-hidden="true"></i>
 							</a>
 							<ul class="dropdown-menu level1">
-								<li><a href="userfavoritegrid.html">user favorite grid</a></li>
-								<li><a href="userfavoritelist.html">user favorite list</a></li>
-								<li><a href="userprofile.html">user profile</a></li>
-								<li class="it-last"><a href="userrate.html">user rate</a></li>
+								<li><a href="{% static 'userfavoritegrid.html' %}">user favorite grid</a></li>
+								<li><a href="{% static 'userfavoritelist.html' %}">user favorite list</a></li>
+								<li><a href="{% static 'userprofile.html' %}">user profile</a></li>
+								<li class="it-last"><a href="{% static 'userrate.html' %}">user rate</a></li>
 							</ul>
 						</li>
 					</ul>
@@ -205,9 +207,9 @@
 							pages <i class="fa fa-angle-down" aria-hidden="true"></i>
 							</a>
 							<ul class="dropdown-menu level1">
-								<li><a href="landing.html">Landing</a></li>
-								<li><a href="404.html">404 Page</a></li>
-								<li class="it-last"><a href="comingsoon.html">Coming soon</a></li>
+								<li><a href="{% static 'landing.html' %}">Landing</a></li>
+								<li><a href="{% static '404.html' %}">404 Page</a></li>
+								<li class="it-last"><a href="{% static 'comingsoon.html' %}">Coming soon</a></li>
 							</ul>
 						</li>                
 						<li><a href="#">Help</a></li>
@@ -260,214 +262,37 @@
 						<option value="date">Release date Descending</option>
 						<option value="date">Release date Ascending</option>
 					</select>
-					<a href="movielist.html" class="list"><i class="ion-ios-list-outline "></i></a>
-					<a  href="moviegrid.html" class="grid"><i class="ion-grid active"></i></a>
+					<a href="/series/?view=list" class="list"><i class="ion-ios-list-outline "></i></a>
+					<a  href="/series/?view=grid" class="grid"><i class="ion-grid active"></i></a>
 				</div>
 				<div class="flex-wrap-movielist">
+				{% if allSeries %}
+					{% for series in allSeries %}
 						<div class="movie-item-style-2 movie-item-style-1">
-							<img src="images/uploads/mv1.jpg" alt="">
+							<img src="{{series.img}}" alt='{{series.series_name}}'>
 							<div class="hvr-inner">
-	            				<a  href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
-	            			</div>
-							<div class="mv-item-infor">
-								<h6><a href="#">oblivion</a></h6>
-								<p class="rate"><i class="ion-android-star"></i><span>8.1</span> /10</p>
+								<a  href="{% url 'series:seriesSeasons' seriesId=series.id %}"> Read more <i class="ion-android-arrow-dropright"></i> </a>
 							</div>
-						</div>					
-						<div class="movie-item-style-2 movie-item-style-1">
-							<img src="images/uploads/mv2.jpg" alt="">
-							<div class="hvr-inner">
-	            				<a  href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
-	            			</div>
 							<div class="mv-item-infor">
-								<h6><a href="#">into the wild</a></h6>
-								<p class="rate"><i class="ion-android-star"></i><span>7.8</span> /10</p>
+								<h6><a href="{% url 'series:seriesSeasons' seriesId=series.id %}">{{series.series_name}}</a></h6>
+								<p class="rate"><i class="ion-android-star"></i><span>{{series.imdb_scor}}</span> /10</p>
 							</div>
 						</div>
-					
-					
-						<div class="movie-item-style-2 movie-item-style-1">
-	            			<img src="images/uploads/mv-item3.jpg" alt="">
-	            			<div class="hvr-inner">
-	            				<a  href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
-	            			</div>
-	            			<div class="mv-item-infor">
-	            				<h6><a href="#">Die hard</a></h6>
-	            				<p class="rate"><i class="ion-android-star"></i><span>7.4</span> /10</p>
-	            			</div>
-	            		</div>
-					
-					
-						<div class="movie-item-style-2 movie-item-style-1">
-	            			<img src="images/uploads/mv-item4.jpg" alt="">
-	            			<div class="hvr-inner">
-	            				<a  href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
-	            			</div>
-	            			<div class="mv-item-infor">
-	            				<h6><a href="#">The walk</a></h6>
-	            				<p class="rate"><i class="ion-android-star"></i><span>7.4</span> /10</p>
-	            			</div>
-	            		</div>
-	            		<div class="movie-item-style-2 movie-item-style-1">
-							<img src="images/uploads/mv3.jpg" alt="">
-							<div class="hvr-inner">
-	            				<a  href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
-	            			</div>
-							<div class="mv-item-infor">
-								<h6><a href="#">blade runner  </a></h6>
-								<p class="rate"><i class="ion-android-star"></i><span>7.3</span> /10</p>
-							</div>
+					{% endfor %}
+				{% else %}
+					<h1>No series to watch</h1>
+				{% endif %}
+<!--				<div class="movie-item-style-2 movie-item-style-1">
+						<img src="{% static 'images/uploads/mv2.jpg' %}" alt="">
+						<div class="hvr-inner">
+							<a  href="{% static 'moviesingle.html' %}"> Read more <i class="ion-android-arrow-dropright"></i> </a>
 						</div>
-						<div class="movie-item-style-2 movie-item-style-1">
-							<img src="images/uploads/mv4.jpg" alt="">
-							<div class="hvr-inner">
-	            				<a  href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
-	            			</div>
-							<div class="mv-item-infor">
-								<h6><a href="#">Mulholland pride</a></h6>
-								<p class="rate"><i class="ion-android-star"></i><span>7.2</span> /10</p>
-							</div>
+						<div class="mv-item-infor">
+							<h6><a href="#">into the wild</a></h6>
+							<p class="rate"><i class="ion-android-star"></i><span>7.8</span> /10</p>
 						</div>
-						<div class="movie-item-style-2 movie-item-style-1">
-							<img src="images/uploads/mv5.jpg" alt="">
-							<div class="hvr-inner">
-	            				<a  href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
-	            			</div>
-							<div class="mv-item-infor">
-								<h6><a href="#">skyfall: evil of boss</a></h6>
-								<p class="rate"><i class="ion-android-star"></i><span>7.0</span> /10</p>
-							</div>
-						</div>
-						<div class="movie-item-style-2 movie-item-style-1">
-	            			<img src="images/uploads/mv-item1.jpg" alt="">
-	            			<div class="hvr-inner">
-	            				<a  href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
-	            			</div>
-	            			<div class="mv-item-infor">
-	            				<h6><a href="#">Interstellar</a></h6>
-	            				<p class="rate"><i class="ion-android-star"></i><span>7.4</span> /10</p>
-	            			</div>
-	            		</div>
-	            		<div class="movie-item-style-2 movie-item-style-1">
-	            			<img src="images/uploads/mv-item2.jpg" alt="">
-	            			<div class="hvr-inner">
-	            				<a  href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
-	            			</div>
-	            			<div class="mv-item-infor">
-	            				<h6><a href="#">The revenant</a></h6>
-	            				<p class="rate"><i class="ion-android-star"></i><span>7.4</span> /10</p>
-	            			</div>
-	            		</div>
-	            		<div class="movie-item-style-2 movie-item-style-1">
-	            			<img src="images/uploads/mv-it10.jpg" alt="">
-	            			<div class="hvr-inner">
-	            				<a  href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
-	            			</div>
-	            			<div class="mv-item-infor">
-	            				<h6><a href="#">harry potter</a></h6>
-	            				<p class="rate"><i class="ion-android-star"></i><span>7.4</span> /10</p>
-	            			</div>
-	            		</div>
-						<div class="movie-item-style-2 movie-item-style-1">
-	            			<img src="images/uploads/mv-it11.jpg" alt="">
-	            			<div class="hvr-inner">
-	            				<a  href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
-	            			</div>
-	            			<div class="mv-item-infor">
-	            				<h6><a href="#">guardians galaxy</a></h6>
-	            				<p class="rate"><i class="ion-android-star"></i><span>7.4</span> /10</p>
-	            			</div>
-	            		</div>
-	            		<div class="movie-item-style-2 movie-item-style-1">
-	            			<img src="images/uploads/mv-it12.jpg" alt="">
-	            			<div class="hvr-inner">
-	            				<a  href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
-	            			</div>
-	            			<div class="mv-item-infor">
-	            				<h6><a href="#">the godfather</a></h6>
-	            				<p class="rate"><i class="ion-android-star"></i><span>7.4</span> /10</p>
-	            			</div>
-	            		</div>
-						<div class="movie-item-style-2 movie-item-style-1">
-	            			<img src="images/uploads/mv-item6.jpg" alt="">
-	            			<div class="hvr-inner">
-	            				<a  href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
-	            			</div>
-	            			<div class="mv-item-infor">
-	            				<h6><a href="#">blue velvet</a></h6>
-	            				<p class="rate"><i class="ion-android-star"></i><span>7.4</span> /10</p>
-	            			</div>
-	            		</div>
-	            		<div class="movie-item-style-2 movie-item-style-1">
-	            			<img src="images/uploads/mv-item7.jpg" alt="">
-	            			<div class="hvr-inner">
-	            				<a  href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
-	            			</div>
-	            			<div class="mv-item-infor">
-	            				<h6><a href="#">gravity</a></h6>
-	            				<p class="rate"><i class="ion-android-star"></i><span>7.4</span> /10</p>
-	            			</div>
-	            		</div>
-	            		<div class="movie-item-style-2 movie-item-style-1">
-	            			<img src="images/uploads/mv-item8.jpg" alt="">
-	            			<div class="hvr-inner">
-	            				<a  href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
-	            			</div>
-	            			<div class="mv-item-infor">
-	            				<h6><a href="#">southpaw</a></h6>
-	            				<p class="rate"><i class="ion-android-star"></i><span>7.4</span> /10</p>
-	            			</div>
-	            		</div>
-	            		<div class="movie-item-style-2 movie-item-style-1">
-	            			<img src="images/uploads/mv-it9.jpg" alt="">
-	            			<div class="hvr-inner">
-	            				<a  href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
-	            			</div>
-	            			<div class="mv-item-infor">
-	            				<h6><a href="#">jurassic park</a></h6>
-	            				<p class="rate"><i class="ion-android-star"></i><span>7.4</span> /10</p>
-	            			</div>
-	            		</div>
-	            		<div class="movie-item-style-2 movie-item-style-1">
-	            			<img src="images/uploads/mv-item9.jpg" alt="">
-	            			<div class="hvr-inner">
-	            				<a  href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
-	            			</div>
-	            			<div class="mv-item-infor">
-	            				<h6><a href="#">the forest</a></h6>
-	            				<p class="rate"><i class="ion-android-star"></i><span>7.4</span> /10</p>
-	            			</div>
-	            		</div>
-	            		<div class="movie-item-style-2 movie-item-style-1">
-	            			<img src="images/uploads/mv-item10.jpg" alt="">
-	            			<div class="hvr-inner">
-	            				<a  href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
-	            			</div>
-	            			<div class="mv-item-infor">
-	            				<h6><a href="#">spectre</a></h6>
-	            				<p class="rate"><i class="ion-android-star"></i><span>7.4</span> /10</p>
-	            			</div>
-	            		</div>
-	            		<div class="movie-item-style-2 movie-item-style-1">
-	            			<img src="images/uploads/mv-item11.jpg" alt="">
-	            			<div class="hvr-inner">
-	            				<a  href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
-	            			</div>
-	            			<div class="mv-item-infor">
-	            				<h6><a href="#">strager things</a></h6>
-	            				<p class="rate"><i class="ion-android-star"></i><span>7.4</span> /10</p>
-	            			</div>
-	            		</div>
-	            		<div class="movie-item-style-2 movie-item-style-1">
-	            			<img src="images/uploads/mv-item12.jpg" alt="">
-	            			<div class="hvr-inner">
-	            				<a  href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
-	            			</div>
-	            			<div class="mv-item-infor">
-	            				<h6><a href="#">la la land</a></h6>
-	            				<p class="rate"><i class="ion-android-star"></i><span>7.4</span> /10</p>
-	            			</div>
-	            		</div>
+					</div>
+-->
 				</div>		
 				<div class="topbar-filter">
 					<label>Movies per page:</label>
@@ -543,9 +368,9 @@
 						</form>
 					</div>
 					<div class="ads">
-						<img src="images/uploads/ads1.png" alt="">
+						<img src="{% static 'images/uploads/ads1.png' %}" alt="">
 					</div>
-					<div class="sb-facebook sb-it">
+<!--					<div class="sb-facebook sb-it">
 						<h4 class="sb-title">Find us on Facebook</h4>
 						<iframe src="" data-src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fhaintheme%2F%3Ffref%3Dts&tabs=timeline&width=340&height=315px&small_header=true&adapt_container_width=false&hide_cover=false&show_facepile=true&appId"  height="315" style="width:100%;border:none;overflow:hidden" ></iframe>
 					</div>
@@ -558,6 +383,7 @@
 							</div>
 						</div>					
 					</div>
+-->
 				</div>
 			</div>
 		</div>
@@ -568,7 +394,7 @@
 	<div class="container">
 		<div class="flex-parent-ft">
 			<div class="flex-child-ft item1">
-				 <a href="index.html"><img class="logo" src="images/logo1.png" alt=""></a>
+				 <a href="{% static 'index.html' %}"><img class="logo" src="{% static 'images/logo1.png' %}" alt=""></a>
 				 <p>5th Avenue st, manhattan<br>
 				New York, NY 10001</p>
 				<p>Call us: <a href="#">(+01) 202 342 6789</a></p>
@@ -622,9 +448,9 @@
 </footer>
 <!-- end of footer section-->
 
-<script src="js/jquery.js"></script>
-<script src="js/plugins.js"></script>
-<script src="js/plugins2.js"></script>
-<script src="js/custom.js"></script>
+<script src="{% static 'js/jquery.js' %}"></script>
+<script src="{% static 'js/plugins.js' %}"></script>
+<script src="{% static 'js/plugins2.js' %}"></script>
+<script src="{% static 'js/custom.js' %}"></script>
 </body>
 </html>
