@@ -39,7 +39,7 @@ class Season(models.Model):
 		indexes = [models.Index(fields=['series', 'season_number'])]
 		ordering = ['season_number']
 	def __str__ (self):
-		return self.season_name + ' - ' + str(self.season_number)
+		return self.series.series_name + ' ' + self.season_name + ' - ' + str(self.season_number)
 	
 class Episode(models.Model):
 	def noImageSrc():
@@ -58,7 +58,7 @@ class Episode(models.Model):
 		ordering = ['episode_number']
 		
 	def __str__ (self):
-		return self.episode_name + ' - ' + str(self.episode_number)
+		return self.season.series.series_name + ' ' + self.season.season_name + ' ' + self.episode_name + ' - ' + str(self.episode_number)
 	
 class Series_detail(models.Model):
 	series = models.ForeignKey(Series, on_delete=models.CASCADE, blank=True)

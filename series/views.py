@@ -149,7 +149,7 @@ def createSeries(request):
 			for episode in episodes:
 				episodeNr = api.getEpisodeNumber(episode["name"])
 				embedLink = "https://openload.co/embed/" + episode["linkextid"]
-				episodeName = api.cleanEpisodeName(episode['name'], [serieFolderName] + meta.getCleanNameParts())
+				episodeName = api.cleanEpisodeName(episode['name'], [serie['name']] + meta.getCleanNameTextParts(), meta.getCleanNameRegexParts(), meta.getReplaceNameParts() )
 				try:
 					episodeObj = Episode.objects.get(season=seasonObj, episode_number=episodeNr)
 					episodeObj.episode_name = episodeName
