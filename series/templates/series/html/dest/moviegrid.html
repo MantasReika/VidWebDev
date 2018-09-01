@@ -138,6 +138,7 @@
 			    </div>
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse flex-parent" id="bs-example-navbar-collapse-1">
+                <!--
 					<ul class="nav navbar-nav flex-child-menu menu-left">
 						<li class="hidden">
 							<a href="#page-top"></a>
@@ -217,11 +218,12 @@
 						<li class="loginLink"><a href="#">LOG In</a></li>
 						<li class="btn signupLink"><a href="#">sign up</a></li>
 					</ul>
+                    -->
 				</div>
 			<!-- /.navbar-collapse -->
 	    </nav>
 	    
-	    <!-- top search form -->
+	    <!-- top search form 
 	    <div class="top-search">
 	    	<select>
 				<option value="united">TV show</option>
@@ -229,6 +231,7 @@
 			</select>
 			<input type="text" placeholder="Search for a movie, TV Show or celebrity that you are looking for">
 	    </div>
+        -->
 	</div>
 </header>
 <!-- END | Header -->
@@ -251,9 +254,10 @@
 <div class="page-single">
 	<div class="container">
 		<div class="row ipad-width">
-			<div class="col-md-8 col-sm-12 col-xs-12">
-				<div class="topbar-filter">
+			<div class="col-md-12 col-sm-12 col-xs-12">
+				<div class="topbar-filter fw">
 					<p>Found <span>1,608 movies</span> in total</p>
+                <!--    
 					<label>Sort by:</label>
 					<select>
 						<option value="popularity">Popularity Descending</option>
@@ -265,8 +269,9 @@
 					</select>
 					<a href="/series/?view=list" class="list"><i class="ion-ios-list-outline "></i></a>
 					<a  href="/series/?view=grid" class="grid"><i class="ion-grid active"></i></a>
-				</div>
-				<div class="flex-wrap-movielist">
+				-->
+                </div>
+                <div class="flex-wrap-movielist">
 				{% if allSeries %}
 					{% for series in allSeries %}
 						<div class="movie-item-style-2 movie-item-style-1">
@@ -296,6 +301,7 @@
 -->
 				</div>		
 				<div class="topbar-filter">
+                <!--
 					<label>Movies per page:</label>
 					<select>
 						<option value="range">20 Movies</option>
@@ -312,8 +318,10 @@
 						<a href="#">79</a>
 						<a href="#"><i class="ion-arrow-right-b"></i></a>
 					</div>
-				</div>
+                -->
+                </div>
 			</div>
+<!--
 			<div class="col-md-4 col-sm-12 col-xs-12">
 				<div class="sidebar">
 					<div class="searh-form">
@@ -371,7 +379,7 @@
 					<div class="ads">
 						<img src="{% static 'images/uploads/ads1.png' %}" alt="">
 					</div>
-<!--					<div class="sb-facebook sb-it">
+					<div class="sb-facebook sb-it">
 						<h4 class="sb-title">Find us on Facebook</h4>
 						<iframe src="" data-src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fhaintheme%2F%3Ffref%3Dts&tabs=timeline&width=340&height=315px&small_header=true&adapt_container_width=false&hide_cover=false&show_facepile=true&appId"  height="315" style="width:100%;border:none;overflow:hidden" ></iframe>
 					</div>
@@ -384,10 +392,11 @@
 							</div>
 						</div>					
 					</div>
--->
+
 				</div>
 			</div>
-		</div>
+-->		
+        </div>
 	</div>
 </div>
 <!-- footer section-->
