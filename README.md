@@ -1,6 +1,16 @@
 # VidWebBack
 
 ## Basic Git
+
+### Commit changes to your branch
+```sh
+> git checkout yourBranch
+> git pull
+> git commit -m 'commit message about changes made'
+> git push
+```
+
+
 ### How to merge your changes onto master once you have commited and pushed your changes to yourBranch.
 ```sh
 > git checkout yourBranch
