@@ -29,13 +29,80 @@ def index(request):
 	return HttpResponse(render(request, 'watch/index.html', context))
 
 def moviesIndex(request):
+	if request.method == 'GET':
+		# create a form instance and populate it with data from the request:
+		print()
+		print("if request.method == 'GET'")
+
+		url_search_kw = request.GET.getlist('search_kw')
+		url_genre = request.GET.getlist('genres')
+		url_ratings = request.GET.getlist('rating')
+		url_from_yr = request.GET.get('from_yr')
+		url_to_yr = request.GET.get('to_yr')
+		
+		print("search_kw: %s" % url_search_kw)
+		print("genres: %s" % url_genre)
+		print("ratings: %s" % url_ratings)
+		print("from_yr: %s" % url_from_yr)
+		print("to_yr: %s" % url_to_yr)
+		print()
+		
+		allMovies = Movie.objects.all()
+		filteredMovies = Movie.objects.all()
+		
+		if url_ratings != []:
+			ratings = []
+			for rating in url_ratings:
+				ratings.append(int(rating.split("_")[0]))
+				ratings.append(int(rating.split("_")[1]))
+			
+			ratings = sorted(ratings)
+			print(ratings)
+			filteredMovies = filteredMovies.filter(imdb_scor__gt=ratings[0], imdb_scor__lt=ratings[1])
+		
+		if url_genre != []:
+			print('"%s"' % url_genre)
+			filteredMovies = filteredMovies.filter(genres__icontains=url_genre[0])
+			print(filteredMovies)
+		
+		#for i in url
+		#if len(url_genres) > 0:
+		#	filteredMovies = Movie.objects.filter(genres__icontains=url_genres)
+		
+		#if len(url_rating) > 0:
+	#		ratingTopVal = url_rating[0].split("_")[0]
+#		#
+		#if len(url_rating) > 0:
+	#		ratingDownVal = url_rating[0].split("_")[1]
+#		
+		#if len() > 0:
+		#	ratingFilterMovies = Movie.objects.filter(rating__)
+	
+	#if filteredMovies != []:
+		context = {'allMovies' : filteredMovies}
+	#else:
+	#	context = {'allMovies' : allMovies}
+	return HttpResponse(render(request, 'watch/html/dest/moviegrid.html', context))
+
+"""        form = NameForm(request.POST)
+# check whether it's valid:
+if form.is_valid():
+# process the data in form.cleaned_data as required
+# ...
+# redirect to a new URL:
+return HttpResponseRedirect('/thanks/')
+
+# if a GET (or any other method) we'll create a blank form
+	else:
+		print("if request.method != 'GET'")
+		
 	allMovies = Movie.objects.all()
 	context = {'allMovies' : allMovies}
-	return HttpResponse(render(request, 'watch/html/dest/moviegrid.html', context))
+	return HttpResponse(render(request, 'watch/html/dest/moviegrid.html', context))"""
 
 def watchMovie(request, movieId):
 	try:
-		movie = Movie.objects.get(id=seriesId)
+		movie = Movie.objects.get(id=movieId)
 	except Movie.DoesNotExist:
 		raise Http404("Movie do not exist where movie_id %s" %(movieId))
 		
@@ -45,7 +112,7 @@ def watchMovie(request, movieId):
 		'videoPlayer' : videoPlayer
 		}
 	
-	return HttpResponse(render(request, '/watch/html/dest/watchMovie.html', context))
+	return HttpResponse(render(request, 'watch/html/dest/watchMovie.html', context))
 	
 def seriesIndex(request):
 	allSeries = Serie.objects.all()
