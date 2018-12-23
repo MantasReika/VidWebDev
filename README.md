@@ -1,5 +1,11 @@
 # VidWebBack
 
+## TODO:
+
+### 1. Figure out how to implement keyword search
+### 2. Search by single genre, rating, release 
+### 3. research blob decoding
+
 ## Basic Git
 
 ### Commit changes to your branch
